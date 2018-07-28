@@ -1,0 +1,13 @@
+<html>
+    <head>
+      <title>Adhoc Reporting Tool</title>
+    </head>
+    <body>
+        <div>Adhoc Reporting Tool:
+          <a href={{ url_for('index') }}>Home</a>
+          <a href={{ url_for('configuration') }}>Configuration</a>
+          <a href={{ url_for('report') }}>Report</a>
+        </div>
+        {% block content %}{% endblock %}
+    </body>
+</html>
