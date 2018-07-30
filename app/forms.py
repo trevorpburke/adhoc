@@ -20,4 +20,4 @@ class ReportForm(FlaskForm):
                               validators=[DataRequired()])
     query = TextAreaField('Query', validators=[DataRequired()],
                           widget=TextArea())
-    submit = SubmitField('Submit Config')
+    submit = SubmitField('Submit Report')
