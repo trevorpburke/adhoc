@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from app import app, db
 from app.models import Configuration, Report
 from app.forms import ConfigurationForm, ReportForm
@@ -31,8 +31,12 @@ def configuration():
 @app.route('/report', methods=['GET', 'POST'])
 def report():
     form = ReportForm()
+    form.config_id.choices =[(c.id, c.config_name) for c in Configuration.\
+                     query.with_entities(Configuration.id,
+                        Configuration.config_name).all()]
     if form.validate_on_submit():
         report = Report(report_name=form.report_name.data,
+                        config_id=form.config_id.data,
                         hour=form.hour.data,
                         day=form.day.data,
                         minute=form.minute.data,

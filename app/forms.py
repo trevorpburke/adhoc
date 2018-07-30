@@ -4,6 +4,7 @@ from wtforms import (StringField, SubmitField,
 from wtforms.widgets import TextArea
 from wtforms.validators import DataRequired, InputRequired
 
+
 SQL_DIALECTS = [('postgresql', 'PostgreSQL'), ('mysql', 'MySQL')]
 
 HOURS = [(0, '12 AM'), (1, '1 AM'), (2, '2 AM'), (3, '3 AM'),
@@ -37,6 +38,9 @@ class ConfigurationForm(FlaskForm):
 class ReportForm(FlaskForm):
     report_name = StringField('Report Name',
                               validators=[DataRequired()])
+    config_id = SelectField('Configuration Name',
+                               coerce=int,
+                               validators=[DataRequired()])
     hour = SelectField('Report Hour', choices=HOURS, coerce=int,
                         validators=[InputRequired()])
     minute = SelectField('Report Minute', choices=MINUTES, coerce=int,
