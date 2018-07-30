@@ -1,3 +1,4 @@
+from sqlalchemy import create_engine
 from werkzeug.security import (generate_password_hash,
                                check_password_hash)
 
@@ -13,6 +14,7 @@ class Configuration(db.Model):
     hostname = db.Column(db.String(64))
     database = db.Column(db.String(64))
     port = db.Column(db.String(10))
+    dialect = db.Column(db.String(50))
     # TODO create DB relationships
 
     def set_password(self, password):
@@ -21,17 +23,20 @@ class Configuration(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def create_engine(self):
+        engine = create_engine(f"{self.dialect}://{self.username}:{self.password}@{self.hostname}:{self.port}/{self.database}")
+        return engine
+
+
 class Report(db.Model):
     __tablename__ = 'report'
     id = db.Column(db.Integer, primary_key=True)
     report_name = db.Column(db.String(64), unique=True)
+    hour = db.Column(db.Integer)
+    minute = db.Column(db.Integer)
+    day = db.Column(db.Integer)
     query = db.Column(db.Text())
+
+
+
     # TODO create DB relationships
-
-
-# class Scheduler(db.Model):
-#     pass
-    # TODO create scheduler that relates to Report model
-
-
-# TODO handle alembic migrations

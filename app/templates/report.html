@@ -11,6 +11,31 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+
+        <p>
+            {{ form.hour.label }}<br>
+            {{ form.hour }}
+            {% for error in form.hour.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.minute.label }}<br>
+            {{ form.minute }}
+            {% for error in form.minute.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.day.label }}<br>
+            {{ form.day }}
+            {% for error in form.day.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
         <p>
             {{ form.query.label }}<br>
             {{ form.query(size=1000) }}

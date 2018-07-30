@@ -18,7 +18,8 @@ def configuration():
                                username=form.username.data,
                                hostname=form.hostname.data,
                                database=form.database.data,
-                               port=form.port.data)
+                               port=form.port.data,
+                               dialect=form.dialect.data)
         config.set_password(form.password.data)
         db.session.add(config)
         db.session.commit()
@@ -32,6 +33,9 @@ def report():
     form = ReportForm()
     if form.validate_on_submit():
         report = Report(report_name=form.report_name.data,
+                        hour=form.hour.data,
+                        day=form.day.data,
+                        minute=form.minute.data,
                         query=form.query.data)
         db.session.add(report)
         db.session.commit()
@@ -39,3 +43,15 @@ def report():
         # with it
         return redirect(url_for('index'))
     return render_template('report.html', form=form)
+
+
+@app.route('/configuration/<config>', methods=['GET'])
+def get_config(config):
+    pass
+
+@app.route('/report/<report_name>', methods=['GET'])
+def get_report(report_name):
+    pass
+
+
+
