@@ -32,7 +32,7 @@ class Report(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     report_name = db.Column(db.String(64), unique=True)
     config_id = db.Column(db.Integer, db.ForeignKey('configuration.id'),
-                            nullable=True)
+                            nullable=False)
     hour = db.Column(db.Integer)
     minute = db.Column(db.Integer)
     day = db.Column(db.Integer)
