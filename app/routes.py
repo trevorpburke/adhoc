@@ -20,7 +20,6 @@ def configuration():
                                database=form.database.data,
                                port=form.port.data,
                                dialect=form.dialect.data)
-        config.set_password(form.password.data)
         db.session.add(config)
         db.session.commit()
         # keep this redirect here for a bit till I figure out what to do
@@ -30,6 +29,7 @@ def configuration():
 
 @app.route('/report', methods=['GET', 'POST'])
 def report():
+
     form = ReportForm()
     form.config_id.choices =[(c.id, c.config_name) for c in Configuration.\
                      query.with_entities(Configuration.id,
