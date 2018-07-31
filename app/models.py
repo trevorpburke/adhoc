@@ -2,8 +2,6 @@ from sqlalchemy import create_engine
 
 from app import db
 
-key = 'encryption_key'
-
 class Configuration(db.Model):
     __tablename__ = 'configuration'
     id = db.Column(db.Integer, primary_key=True)
@@ -31,4 +29,4 @@ class Report(db.Model):
     hour = db.Column(db.Integer)
     minute = db.Column(db.Integer)
     day = db.Column(db.Integer)
-    query = db.Column(db.Text())
+    query_text = db.Column(db.Text())

@@ -16,6 +16,7 @@ def configuration():
     if form.validate_on_submit():
         config = Configuration(config_name=form.config_name.data,
                                username=form.username.data,
+                               password=form.password.data,
                                hostname=form.hostname.data,
                                database=form.database.data,
                                port=form.port.data,
@@ -40,7 +41,7 @@ def report():
                         hour=form.hour.data,
                         day=form.day.data,
                         minute=form.minute.data,
-                        query=form.query.data)
+                        query_text=form.query_text.data)
         db.session.add(report)
         db.session.commit()
         # keep this redirect here for a bit till I figure out what to do

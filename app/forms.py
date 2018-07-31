@@ -47,7 +47,7 @@ class ReportForm(FlaskForm):
                           validators=[InputRequired()])
     day = SelectField('Report day', choices=DAYS, coerce=int,
                        validators=[InputRequired()])
-    query = TextAreaField('Query', validators=[DataRequired()],
+    query_text = TextAreaField('Query', validators=[DataRequired()],
                           widget=TextArea())
     submit = SubmitField('Submit Report')
 

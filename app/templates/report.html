@@ -46,9 +46,9 @@
         </p>
 
         <p>
-            {{ form.query.label }}<br>
-            {{ form.query(size=1000) }}
-            {% for error in form.query.errors %}
+            {{ form.query_text.label }}<br>
+            {{ form.query_text(size=1000) }}
+            {% for error in form.query_text.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
