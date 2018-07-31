@@ -15,3 +15,13 @@ Overall Goals:
     – Command line interface 
     – Advanced cron-like scheduling formatting
 
+To Install & Run Locally:
+
+    $ git clone https://github.com/trevorpburke/adhoc.git && cd ahoc
+    $ python3 -m venv .
+    $ source bin/activate
+    $ pip install -r requirements.txt
+    $ flask db migrate -m "create tables" # run migrations
+    $ flask db upgrade 
+    $ flask run
+
