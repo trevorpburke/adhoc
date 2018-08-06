@@ -30,3 +30,8 @@ class Report(db.Model):
     minute = db.Column(db.Integer)
     day = db.Column(db.Integer)
     query_text = db.Column(db.Text())
+
+    def get_engine(self):
+        report_config = Configuration.query.filter_by(id=self.config_id).first()
+        engine = report_config.create_engine()
+        return engine
