@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, Response
 from app import app, db
 from app.models import Configuration, Report
 from app.forms import ConfigurationForm, ReportForm
@@ -30,6 +30,9 @@ def configuration():
 
 @app.route('/report', methods=['GET', 'POST'])
 def report():
+    if Configuration.query.count() == 0:
+        # return 404 somehow
+        pass
 
     form = ReportForm()
     form.config_id.choices =[(c.id, c.config_name) for c in Configuration.\

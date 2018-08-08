@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 
 from app import db
 
+
 class Configuration(db.Model):
     __tablename__ = 'configuration'
     id = db.Column(db.Integer, primary_key=True)
@@ -35,3 +36,4 @@ class Report(db.Model):
         report_config = Configuration.query.filter_by(id=self.config_id).first()
         engine = report_config.create_engine()
         return engine
+

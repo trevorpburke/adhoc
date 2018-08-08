@@ -11,4 +11,5 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bootstrap = Bootstrap(app)
 
-from app import routes, models, errors
+from app import routes, models, errors #, scheduler
+
