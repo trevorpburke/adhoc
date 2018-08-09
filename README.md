@@ -25,7 +25,7 @@ To Install & Run Locally:
     $ flask db upgrade 
     $ flask run
 
-Preliminary screenshots of the Report and Configuration routes:
+Preliminary screenshots of the Configuration and Report routes:
 
 ![Configuration Route](https://raw.githubusercontent.com/trevorpburke/adhoc/master/images/configuration_route.png)
 ![Report Route](https://raw.githubusercontent.com/trevorpburke/adhoc/master/images/report_route.png)
