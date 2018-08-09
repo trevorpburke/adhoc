@@ -31,7 +31,7 @@ def configuration():
 @app.route('/report', methods=['GET', 'POST'])
 def report():
     if Configuration.query.count() == 0:
-        # return 404 somehow
+        #TODO return 404 somehow
         pass
 
     form = ReportForm()
