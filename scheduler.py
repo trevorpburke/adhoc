@@ -8,7 +8,7 @@ from app.models import Report
 
 app = Celery('scheduler', broker='pyamqp://guest@localhost//')
 
-
+app.config_from_object('celeryconfig')
 
 @app.on_after_configure.connect
 def check_new_reports(sender, **kwargs):
@@ -19,11 +19,14 @@ def check_new_reports(sender, **kwargs):
 @app.task
 def run_report(report_id):
     """
-    TODO
+    report_id: list
+
+    celery beat task arguments are stored in list or tuple
     """
-    report = Report.query.filter_by(id=report_id).first()
-    df = pd.read_sql(report.query_text, r.create_engine())
-    df.to_csv(f'{report.report_name}.csv', index=None)
+    for r in report_id:
+        report = Report.query.filter_by(id=r).first()
+        df = pd.read_sql(report.query_text, report.create_engine())
+        df.to_csv(f'{report.report_name}.csv', index=None)
 
 
 def find_new_reports():

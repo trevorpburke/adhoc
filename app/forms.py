@@ -17,11 +17,10 @@ HOURS = [(0, '12 AM'), (1, '1 AM'), (2, '2 AM'), (3, '3 AM'),
 MINUTES = [(0, 'On the hour'), (15, 'At XX:15'), (30, 'At XX:30'),
            (45, 'At XX:45')]
 
-DAYS = [(0, 'Every Monday'), (1, 'Every Tuesday'),
-        (2, 'Every Wednesday'), (3, 'Every Thursday'),
-        (4, 'Every Friday'), (5, 'Every Saturday'),
-        (6, 'Every Sunday')]
-
+DAYS = [(0, 'Every Sunday'), (1, 'Every Monday'),
+        (2, 'Every Tuesday'), (3, 'Every Wednesday'),
+        (4, 'Every Thursday'), (5, 'Every Friday'),
+        (6, 'Every Saturday')]
 
 class ConfigurationForm(FlaskForm):
     config_name = StringField('Configuration Name',
