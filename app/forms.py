@@ -27,6 +27,7 @@ class ConfigurationForm(FlaskForm):
     config_name = StringField('Configuration Name',
                               validators=[DataRequired()])
     username = StringField('Username', validators=[DataRequired()])
+    # TODO encrypt password
     password = PasswordField('Password', validators=[DataRequired()])
     hostname = StringField('Hostname', validators=[DataRequired()])
     database = StringField('Database', validators=[DataRequired()])
