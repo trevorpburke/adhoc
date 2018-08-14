@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import (StringField, SubmitField,
-                     PasswordField, TextAreaField, SelectField)
+                     PasswordField, TextAreaField, SelectField, IntegerField)
 from wtforms.widgets import TextArea
-from wtforms.validators import DataRequired, InputRequired
+from wtforms.validators import DataRequired, InputRequired, NumberRange
 
 
 SQL_DIALECTS = [('postgresql', 'PostgreSQL'), ('mysql', 'MySQL')]
@@ -43,8 +43,8 @@ class ReportForm(FlaskForm):
                                validators=[DataRequired()])
     hour = SelectField('Report Hour', choices=HOURS, coerce=int,
                         validators=[InputRequired()])
-    minute = SelectField('Report Minute', choices=MINUTES, coerce=int,
-                          validators=[InputRequired()])
+    minute = IntegerField('Report Minute',
+                         validators=[InputRequired(), NumberRange(0, 59)])
     day = SelectField('Report day', choices=DAYS, coerce=int,
                        validators=[InputRequired()])
     query_text = TextAreaField('Query', validators=[DataRequired()],

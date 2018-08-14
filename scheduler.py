@@ -10,6 +10,7 @@ app = Celery('scheduler', broker='pyamqp://guest@localhost//')
 
 app.config_from_object('celeryconfig')
 
+
 @app.on_after_configure.connect
 def check_new_reports(sender, **kwargs):
     sender.add_periodic_task(30.0, find_new_reports(),

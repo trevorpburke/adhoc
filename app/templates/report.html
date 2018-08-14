@@ -31,7 +31,7 @@
 
         <p>
             {{ form.minute.label }}<br>
-            {{ form.minute }}
+            {{ form.minute(size=20) }}
             {% for error in form.minute.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
